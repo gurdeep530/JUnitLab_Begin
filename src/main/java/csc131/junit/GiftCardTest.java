@@ -2,6 +2,7 @@ package csc131.junit;
 
 import static org.junit.Assert.*;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 
 class GiftCardTest {
@@ -83,16 +84,20 @@ class GiftCardTest {
 			
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	void constructor_IncorrectID_Low()
 	{
+		Assert.assertThrows(IllegalArgumentException.class, () -> { 
 		new GiftCard(-1,100.00);
+		});
 	}
 	
-	@Test(expected = IllegalArgumentException.class)
+	@Test
 	void constructor_IncorrectID_High()
 	{
+		Assert.assertThrows(IllegalArgumentException.class, () -> { 
 		new GiftCard(100000,100.00);
+		});
 	}
 
 
